@@ -15,5 +15,5 @@ npm i mongoose
 ```
 Test routes using Insomnia
 ## Link to Walkthrough Video
-[Video Walkthrough](url)
+[Video Walkthrough](https://drive.google.com/file/d/16cBVlZ6UZ08-Rx7_mir4E3dR_3t6wV_q/view)
 
