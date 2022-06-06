@@ -4,7 +4,7 @@ const { StringDecoder } = require('string_decoder');
 
 const ThoughtSchema = new Schema ({
     thoughtText: {
-        type: string,
+        type: String,
         required: true,
         maxlength: 280,
     },
@@ -13,7 +13,7 @@ const ThoughtSchema = new Schema ({
         default: Date.now
     },
     userName: {
-        type: string,
+        type: String,
         required: true
     },
     //reactions
