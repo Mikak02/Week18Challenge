@@ -5,14 +5,16 @@ const UserSchema = new Schema ({
 
     userName: {
         type: String,
-        trim: true
+        trim: true,
+        required: true,
+        unique: true
     },
     email: {
         type: String,
-        trim: true
-        // required: 'Email is required',
-        // unique: true,
-        // match: [/.+@.+\..+/]
+        trim: true,
+        required: 'Email is required',
+        unique: true,
+        match: [/.+@.+\..+/]
     },
     //thoughts:{
 //add thoughts with array of _id values referencing the thought model
