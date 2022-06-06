@@ -1,4 +1,4 @@
-const { Thought } = require('../models');
+const { Reaction, Thought } = require('../models');
 
 const thoughtController = {
     //get all 
@@ -56,6 +56,36 @@ const thoughtController = {
             })
             .catch(err => res.status(400).json(err));
     },
+    addReaction({ params, body }, res) {
+        Thought.findOneAndUpdate(
+            { _id: params.thoughtId },
+            { $push: { reaction: body } },
+            { new: true, runValidators: true })
+       
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.json(err));
+    },
+    removeReaction({ params }, res) { 
+            Thought.findOneAndUpdate(
+                { _id: params.thoughtId },
+                { $pull: { reaction: { reactionId: params.reactionId } } },
+                { new: true }
+            )
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.json(err));
+    }
 };
 
 module.exports = thoughtController
