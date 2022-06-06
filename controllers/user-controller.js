@@ -1,7 +1,6 @@
-const { User } =require('../models');
+const { User } = require('../models');
 
 const userController = {
-    //functions will go here as methods
     //get all 
     getAllUser(req, res) {
         User.find({})
@@ -11,6 +10,7 @@ const userController = {
             res.status(400).json(err);
         });
     },
+    
     //get one
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
@@ -30,7 +30,7 @@ const userController = {
     createUser({ body }, res) {
         User.create(body)
         .then(dbUserData => res.json(dbUserData))
-        .catch(err => ers.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
     //update by id
     updateUser({ params, body }, res) {
